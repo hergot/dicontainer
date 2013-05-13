@@ -11,7 +11,8 @@ class PersistentServiceTest extends \PHPUnit_Framework_TestCase {
         $storage->expects($this->once())
                 ->method('read')
                 ->will($this->returnCallback(function($key) {
-                    $this->assertEquals('hergotDicontainerPersistentService_62f5cd474da4a0f71f9dcaa72f4de948', $key);
+                    $keyPrefix = substr($key, 0, strpos($key, '_'));
+                    $this->assertEquals('hergotDicontainerPersistentService', $keyPrefix);
                     return null;
                 }));
         $callback = function() { return '1'; };
@@ -24,7 +25,8 @@ class PersistentServiceTest extends \PHPUnit_Framework_TestCase {
         $storage->expects($this->once())
                 ->method('read')
                 ->will($this->returnCallback(function($key) {
-                    $this->assertEquals('hergotDicontainerPersistentService_5d91e4c8b97e9e9e0d5e658370307c63', $key);
+                    $keyPrefix = substr($key, 0, strpos($key, '_'));
+                    $this->assertEquals('hergotDicontainerPersistentService', $keyPrefix);
                     return serialize('2');
                 }));
         $callback = function() { return '1'; };
