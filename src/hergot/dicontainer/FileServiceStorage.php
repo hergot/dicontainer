@@ -21,7 +21,7 @@ class FileServiceStorage implements ServiceStorageInterface {
      * Read from file filesystem for specified key
      * 
      * @param string $key
-     * @return mixed
+     * @return string|null
      */
     public function read($key) {
         $filename = $this->directory . '/' . $key;
@@ -35,7 +35,7 @@ class FileServiceStorage implements ServiceStorageInterface {
      * Write file to filesystem for specified key with appropriate content
      * 
      * @param string $key
-     * @param mixed $data
+     * @param string $data
      */
     public function write($key, $data) {
         $filename = $this->directory . '/' . $key;
